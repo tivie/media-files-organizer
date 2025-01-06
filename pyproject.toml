@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "media-files-organizer"
+version = "0.1.0"
+description = ""
+authors = ["Estevão Soares dos Santos <estevao.santos@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
+rich = "^13.9.4"
+bs4 = "^0.0.2"
+pymediainfo = "^6.1.0"
+
+[tool.poetry.scripts]
+media-files-organizer = "media_files_organizer.cli:main"
+
+[tool.pylint.main]
+ignore = [".venv"]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-mock = "^3.14.0"
+pytest-cov = "^6.0.0"
+pylint = "^3.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

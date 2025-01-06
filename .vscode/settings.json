@@ -1,0 +1,7 @@
+{
+    "pylint.args": [
+        "--rcfile=${workspaceFolder}/.pylintrc"
+    ],
+    //"python.analysis.extraPaths": ["./media_files_organizer"],
+    "python.linting.pylintArgs": ["--ignore=.venv"]
+}

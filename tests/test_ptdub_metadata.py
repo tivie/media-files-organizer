@@ -76,7 +76,8 @@ def test_fetch_actor(ptdub_metadata: PTDubMetadata, mock_scrapper: MagicMock):
         reconhecimento="Dublador principal",
         foto_perfil="http://example.com/profile.jpg",
         biografia="Ator experiente.",
-        role="Protagonist"
+        role="Protagonist",
+        dbid=None
     )
 
     # Chamar o método
@@ -113,6 +114,7 @@ def test_fetch_actors(ptdub_metadata: PTDubMetadata, mock_scrapper: MagicMock):
         nome_portugues="Season 1",
         outline="Descrição da temporada.",
         overview="Resumo detalhado da temporada.",
+        dbid=None,
         atores=[
             ScrapedActor(
                 url="http://example.com/actor1",
@@ -124,7 +126,8 @@ def test_fetch_actors(ptdub_metadata: PTDubMetadata, mock_scrapper: MagicMock):
                 reconhecimento=None,
                 foto_perfil="http://example.com/maria.jpg",
                 biografia=None,
-                role="Villain"
+                role="Villain",
+                dbid=None
             ),
             ScrapedActor(
                 url=None,
@@ -136,7 +139,8 @@ def test_fetch_actors(ptdub_metadata: PTDubMetadata, mock_scrapper: MagicMock):
                 reconhecimento=None,
                 foto_perfil=None,
                 biografia=None,
-                role=None
+                role=None,
+                dbid=None
             )
         ]
     )
@@ -152,7 +156,8 @@ def test_fetch_actors(ptdub_metadata: PTDubMetadata, mock_scrapper: MagicMock):
         reconhecimento=None,
         foto_perfil="http://example.com/maria.jpg",
         biografia=None,
-        role="Villain"
+        role="Villain",
+        dbid=None
     )
 
     # Chamar o método
@@ -201,7 +206,8 @@ def test_fetch_actor_with_default_role(ptdub_metadata: PTDubMetadata, mock_scrap
         reconhecimento=None,
         foto_perfil="http://example.com/pedro.jpg",
         biografia=None,
-        role=None
+        role=None,
+        dbid=None
     )
 
     # Chamar o método
@@ -229,7 +235,8 @@ def test_fetch_actors_with_empty_data(ptdub_metadata: PTDubMetadata, mock_scrapp
         nome_portugues="Season 1",
         outline=None,
         overview=None,
-        atores=[]
+        atores=[],
+        dbid=None
     )
 
     # Chamar o método

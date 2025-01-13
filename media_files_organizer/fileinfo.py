@@ -79,7 +79,8 @@ class FileInfo:
         print(media_info["audio"])
     """
 
-    def get_media_info(self, file_path: str) -> MedaInfoStrut:
+    @staticmethod
+    def get_media_info(file_path: str) -> MedaInfoStrut:
         """
         Get media file information using the pymediainfo library.
 
@@ -120,8 +121,9 @@ class FileInfo:
             >>> print(media_info["video"])
             >>> print(media_info["audio"])
         """
-        
+
         media_info = MediaInfo.parse(file_path)
+
         video_info: VideoInfo = {
             "codec": "",
             "micodec": "",
@@ -137,7 +139,7 @@ class FileInfo:
             "duration": "",
             "durationinseconds": 0,
         }
-        audio_info = []
+        audio_info: list[AudioInfo] = []
 
         for track in media_info.tracks:
             if track.track_type == "Video":
@@ -155,8 +157,8 @@ class FileInfo:
                     "aspectratio": f"{track.display_aspect_ratio}",
                     "framerate": track.frame_rate,
                     "scantype": track.scan_type,
-                    "default": True if track.default == 'Yes' else False,
-                    "forced": True if track.default == 'Yes' else False,
+                    "default": track.default == 'Yes',
+                    "forced": track.forced == 'Yes',
                     "duration": duration,
                     "durationinseconds": duration_in_seconds,
                 }
@@ -169,8 +171,8 @@ class FileInfo:
                     "scantype": "progressive",
                     "channels": track.channel_s,
                     "samplingrate": track.sampling_rate,
-                    "default": track.default,
-                    "forced": track.forced,
+                    "default": track.default == 'Yes',
+                    "forced": track.forced == 'Yes',
                 }
                 audio_info.append(audio_info_t)
 

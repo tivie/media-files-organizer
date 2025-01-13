@@ -6,7 +6,6 @@ from rich.console import Console
 from nfo_generator import NFO
 from db_connector import DBConnector
 from pt_scrapper import PTScrapper
-from rich.console import Console
 
 
 

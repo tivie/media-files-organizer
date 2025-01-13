@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<season>
+  <title>Season {{ season_number }}{%if season_name %} - {{ season_name }}{% endif %}</title>
+  <seasonnumber>{{ season_number }}</seasonnumber>
+  <showtitle>{{ series_name }}</showtitle>
+  <plot>{{ overview }}</plot>
+  <outline>{{ overview }}</outline>
+  <lockdata>false</lockdata>
+  <lockedfields>Name|Overview|Cast</lockedfields>
+  <dateadded>{{ dateadded }}</dateadded>
+  <year>{{ year }}</year>
+  <mpaa>{{ mpaa }}</mpaa>
+  <tvdbid></tvdbid>
+  <premiered>{{ release_date }}</premiered>
+  <releasedate>{{ release_date }}</releasedate>
+  {% for genre in genres %}
+    <genre>{{ genre }}</genre>
+  {% endfor %}
+  <art>
+    <poster>/data/anime/{{ series_name_safe }}/season01-poster.jpg</poster>
+  </art>
+  {% for actor in actors %}
+    <actor>
+      <name>{{ actor["name"] }}</name>
+      <role>{{ actor["role"] }}</role>
+      <type>Actor</type>
+      <thumb>{{ actor["thumb"] }}</thumb>
+    </actor>
+  {% endfor %}
+</season>

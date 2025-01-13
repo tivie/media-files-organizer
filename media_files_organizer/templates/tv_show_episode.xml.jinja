@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<episodedetails>
+    <lockdata>false</lockdata>
+    <dateadded></dateadded>
+    <title>{{ episode_name }}</title>
+    <showtitle>{{ series_name }}</showtitle>
+    <season>{{ season_number }}</season>
+    <episode>{{ episode_number }}</episode>
+    <aired>{{ air_date }}</aired>
+    <year>{{ year }}</year>
+    <runtime></runtime>
+    <rating>{{ community_rating }}</rating>
+    <mpaa>{{ mpaa }}</mpaa>
+    <plot>{{ overview }}</plot>
+    <outline>{{ overview }}</outline>
+    {% if id %}<uniqueid type="kyuubi" default="true">{{ id }}</uniqueid>{% endif %}  <!-- add a value to type="" eg imdb, tmdb, home, sport, docu, see sample below -->
+    <tvrageid></tvrageid>
+    <imdbid></imdbid>
+    <kitsuid></kitsuid>
+    <anidbid></anidbid>
+    <tvdbid></tvdbid>
+
+    {% for genre in genres %}
+        <genre>{{ genre }}</genre>
+    {% endfor %}
+
+    <art>
+        <poster>{{ poster }}</poster>
+    </art>
+    
+    <director></director>
+
+    {% for actor in actors %}
+        <actor>
+            <name>{{ actor["name"] }}</name>
+            <role>{{ actor["role"] }}</role>
+            <type>Actor</type>
+            <thumb>{{ actor["thumb"] }}</thumb>
+        </actor>
+    {% endfor %}
+
+    <fileinfo>
+        <streamdetails>
+          <video>
+            <codec>{{ fileinfo["video"]["codec"] }}</codec>
+            <micodec>{{ fileinfo["video"]["micodec"] }}</micodec>
+            <bitrate>{{ fileinfo["video"]["bitrate"] }}</bitrate>
+            <width>{{ fileinfo["video"]["width"] }}</width>
+            <height>{{ fileinfo["video"]["height"] }}</height>
+            <aspect>{{ fileinfo["video"]["aspect"] }}</aspect>
+            <aspectratio>{{ fileinfo["video"]["aspect"] }}</aspectratio>
+            <framerate>{{ fileinfo["video"]["framerate"] }}</framerate>
+            <scantype>{{ fileinfo["video"]["scantype"] }}</scantype>
+            <default>{{ fileinfo["video"]["default"] }}</default>
+            <forced>{{ fileinfo["video"]["forced"] }}</forced>
+            <duration>{{ fileinfo["video"]["duration"] }}</duration>
+            <durationinseconds>{{ fileinfo["video"]["durationinseconds"] }}</durationinseconds>
+          </video>
+          <audio>
+            <codec>{{ fileinfo["audio"][0]["codec"] }}</codec>
+            <micodec>{{ fileinfo["audio"][0]["micodec"] }}</micodec>
+            <bitrate>{{ fileinfo["audio"][0]["bitrate"] }}</bitrate>
+            <language>{{ fileinfo["audio"][0]["language"] }}</language>
+            <scantype>{{ fileinfo["audio"][0]["scantype"] }}</scantype>
+            <channels>{{ fileinfo["audio"][0]["channels"] }}</channels>
+            <samplingrate>{{ fileinfo["audio"][0]["samplingrate"] }}</samplingrate>
+            <default>{{ fileinfo["audio"][0]["default"] }}</default>
+            <forced>{{ fileinfo["audio"][0]["forced"] }}</forced>
+          </audio>
+        </streamdetails>
+    </fileinfo>
+</episodedetails>

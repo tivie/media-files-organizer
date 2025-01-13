@@ -12,12 +12,16 @@ python-dotenv = "^1.0.1"
 rich = "^13.9.4"
 bs4 = "^0.0.2"
 pymediainfo = "^6.1.0"
+jinja2 = "^3.1.5"
 
 [tool.poetry.scripts]
 media-files-organizer = "media_files_organizer.cli:main"
 
 [tool.pylint.main]
 ignore = [".venv"]
+
+[tool.pyright]
+exclude = [".venv"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"

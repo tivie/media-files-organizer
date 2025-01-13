@@ -1,3 +1,13 @@
 {
-    "typeCheckingMode": "strict"
+    "typeCheckingMode": "strict",
+    "include": ["."],
+    "extraPaths": ["./media_files_organizer"],
+    "exclude": [
+        ".venv",
+        ".vscode",
+        ".git",
+        ".mypy_cache",
+        "typings"
+    ],
+
 }

@@ -1,7 +1,20 @@
 {
     "pylint.args": [
-        "--rcfile=${workspaceFolder}/.pylintrc"
+        "--rcfile=.pylintrc"
     ],
-    //"python.analysis.extraPaths": ["./media_files_organizer"],
-    "python.linting.pylintArgs": ["--ignore=.venv"]
+    "python.linting.ignorePatterns": [
+        ".venv/**"
+    ],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.extraPaths": [
+      "./media_files_organizer"
+    ],
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoSearchPaths": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.autoTestDiscoverOnSaveEnabled": true
 }

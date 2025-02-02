@@ -352,7 +352,7 @@ class MediaFilesOrganizer:
 
 
 
-def tvshow(args: argparse.Namespace, mfo: MediaFilesOrganizer, tmdb: TMDBMetadata, media_files: list[str], directory: str) -> None:
+def tvshow(args: argparse.Namespace, mfo: MediaFilesOrganizer, tmdb: TMDBMetadata, media_files: list[str], directory: str, dbconn: DBConnector) -> None:
     # Let's validate the season number against the filenames
     # Infer the season from the filenames
     if args.season:
@@ -426,7 +426,6 @@ def tvshow(args: argparse.Namespace, mfo: MediaFilesOrganizer, tmdb: TMDBMetadat
 
 
     # fetch portuguese metadata from local database
-    dbconn = DBConnector()
     db_season_id = dbconn.get_season_id_of_tvshow_by_tmdb_id(args.tmdb_id, season)
     if db_season_id:
         mfo.print_left("Fetching Portuguese metadata from local database...")
@@ -549,14 +548,21 @@ def main():
         # Load environment variables from .env file
         load_dotenv()
         TMDB_API_KEY = os.getenv("TMDB_API_KEY") # pylint: disable=invalid-name
+        DB_PATH = os.getenv("DB_PATH") # pylint: disable=invalid-name
 
         # Ensure the TMDB API key is set
         if not TMDB_API_KEY:
             mfo.print_error("[red]TMDB API key not found in environment variables.[/red]")
             sys.exit(1)
 
+        # Ensure the DB_PATH key is set
+        if not DB_PATH:
+            mfo.print_error("[red]DB_PATH key not found in environment variables.[/red]")
+            sys.exit(1)
+
         # Initialize the TMDBMetadata class, responsible for fetching metadata from TMDB
         tmdb = TMDBMetadata(api_key=TMDB_API_KEY)
+        dbconn = DBConnector(DB_PATH)  # Initialize the DBConnector class
 
         
         # Parse command-line arguments
@@ -579,7 +585,7 @@ def main():
             sys.exit(1)
 
         elif args.tvshow:
-            tvshow(args, mfo=mfo, media_files=media_files, tmdb=tmdb, directory=args.directory_path)
+            tvshow(args, mfo=mfo, media_files=media_files, tmdb=tmdb, directory=args.directory_path, dbconn=dbconn)
 
     except FileNotFoundError as e:
         mfo.print_error(str(e))

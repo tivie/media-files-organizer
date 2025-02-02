@@ -97,7 +97,15 @@ class DBConnector:
             Inserts multiple people's information into the database in bulk.
     """
 
-    db_name = "database/pt_database.sqlite3"
+    def __init__(self, db_path: str = "database/pt_database.sqlite3"):
+        """
+        Initializes the database connector with the name of the SQLite database file.
+
+        Args:
+            db_path (str): The path of the SQLite database file. Defaults to "database/pt_database.sqlite3".
+        """
+        self.db_name = db_path
+    
 
     def create_person(
             self,

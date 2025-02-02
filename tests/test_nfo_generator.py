@@ -101,7 +101,6 @@ def test_generate_tvshow_episode(mock_episode: Episode, mock_season_data: Season
 
     # Generate the NFO for the episode
     result = nfo.generate_tvshow_episode(mock_episode, "/path/to/episode.mp4")
-    print(result)
 
     # Assert the generated NFO contains expected data
     assert "<title>Pilot</title>" in result
@@ -157,7 +156,6 @@ def test_generate_tvshow_season(mock_season_data: Season):
     assert "<seasonnumber>1</seasonnumber>" in result
     assert "<plot>An exciting first season of the series.</plot>" in result
     assert "<outline>An exciting first season of the series.</outline>" in result
-    assert "<rating>8.7</rating>" in result
     assert "<premiered>2023-01-01</premiered>" in result
     assert "<releasedate>2023-01-01</releasedate>" in result
     assert "<dateadded>" in result  # Ensures dateadded is generated

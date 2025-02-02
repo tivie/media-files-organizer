@@ -1,5 +1,4 @@
 import argparse
-import json
 import os
 import sys
 import re
@@ -167,7 +166,7 @@ class MediaFilesOrganizer:
         return args
 
     def list_supported_files(self, directory: str) -> list[str]:
-        supported_extensions = {".mp4", ".mkv", ".avi", ".m4v"}
+        supported_extensions = {".mp4", ".mkv", ".avi", ".m4v", "wmv"}
         media_files: list[str] = []
 
         # Ensure the directory exists
@@ -180,7 +179,7 @@ class MediaFilesOrganizer:
                 media_files.append(os.path.join(directory, file))
 
         if not media_files:
-            raise FileNotFoundError(f"No supported files (.mp4, .mkv) found in directory '{directory}'.")
+            raise FileNotFoundError(f"No supported files (mp4, mkv, avi, m4v or wmv) found in directory '{directory}'.")
 
         return media_files
 
